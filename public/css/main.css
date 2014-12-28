@@ -144,3 +144,30 @@ body {
 textarea {
     resize: vertical;
 }
+
+.error textarea {
+    border-color: red;
+}
+.error input {
+    border-color: red;
+}
+
+.error-msg {
+    display: none;
+}
+
+.error .error-msg {
+    display: block;
+    font-size: 0.8em;
+    color: red;
+}
+
+#slider-val {
+    width: 20%;
+    float: right;
+}
+
+#slider {
+    width: 75%;
+    margin-top: 8px;
+}

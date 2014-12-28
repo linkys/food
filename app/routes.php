@@ -14,12 +14,13 @@
 Route::get('/', 'IndexController@index');
 Route::get('/recipe/{item}/{id?}', 'RecipeController@get');
 Route::post('/add', 'RecipeController@add');
+Route::post('/add/validator', 'RecipeController@validator');
 
 Route::get('/enter', function (){
     return View::make('login');
 });
 
-
+Route::post('/register/validator', 'UserController@validator');
 Route::post('/login', 'UserController@login');
 Route::any('/logout', 'UserController@logout');
 Route::post('/register', 'UserController@register');

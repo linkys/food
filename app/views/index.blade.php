@@ -1,5 +1,9 @@
 @extends('general.layout')
 
+@section('title')
+    Книга рецептов
+@stop
+
 @section('content')
 
     <div class="jumbotron">

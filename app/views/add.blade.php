@@ -1,16 +1,21 @@
 @extends('general.layout')
 
+@section('title')
+    Добавление рецепта
+@stop
+
 @section('content')
 
     <div class="main">
         @if (Auth::check())
 
-            {{ Form::open([ 'url' => 'add', 'class' => 'form-horizontal' ]) }}
+            {{ Form::open([ 'url' => 'add', 'class' => 'form-horizontal add-recipe-form' ]) }}
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Название</label>
                         <div class="col-md-5">
                             {{ Form::text('title', '', [ 'class' => 'form-control'/*, 'required' => 'true'*/ ]) }}
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
@@ -18,6 +23,7 @@
                         <label class="col-md-4 control-label">Описание</label>
                         <div class="col-md-5">
                             {{ Form::textarea('description', '', [ 'class' => 'form-control'/*, 'required' => 'true'*/ ]) }}
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
@@ -46,10 +52,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Время приготовления</label>
                         <div class="col-md-5">
-                        <div class="input-group">
-                            {{ Form::text('time', '', [ 'class' => 'form-control'/*, 'required' => 'true'*/ ]) }}
-                            <span class="input-group-addon">минут</span>
-                        </div>
+
+                                {{ Form::text('time', '', [ 'class' => 'form-control', 'id' => 'slider-val' ]) }}
+                                <div id="slider"></div>
+                                {{--<input id="slider-val">--}}
+
+                            {{--<div id="slider"></div>--}}
+                            {{--<div id="slider-val"></div>--}}
                         </div>
                     </div>
 
@@ -57,6 +66,7 @@
                         <label class="col-md-4 control-label">Ингредиенты</label>
                         <div class="col-md-5">
                             {{ Form::textarea('ingredients', '', [ 'class' => 'form-control'/*, 'required' => 'true'*/ ]) }}
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
@@ -64,26 +74,17 @@
                         <label class="col-md-4 control-label">Интрукция</label>
                         <div class="col-md-5">
                             {{ Form::textarea('instruction', '', [ 'class' => 'form-control'/*, 'required' => 'true'*/ ]) }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-5 col-md-offset-4 errors">
-
-                            @foreach( $errors->addRecipe->getMessages() as $error  )
-                                @foreach( $error as $message )
-                                    {{ $message }} <br/>
-                                @endforeach
-                            @endforeach
-
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-5 col-md-offset-4">
-                            {{ Form::submit('Отправить', [ 'class' => 'btn btn-primary' ]) }}
+                            {{ Form::submit('Отправить', [ 'class' => 'btn btn-primary add-recipe' ]) }}
                         </div>
                     </div>
+
+                    {{ Form::hidden('validator', action('RecipeController@validator')) }}
 
                 </fieldset>
             {{ Form::close() }}
