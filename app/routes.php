@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('/recipe/{item}/{id?}', 'RecipeController@get');
+Route::get('/recipe/add', 'RecipeController@viewAddPage');
+Route::get('/recipe/{name}', 'IndexController@index')->where('name', '[A-Za-z]+');
+Route::get('/recipe/{id}', 'RecipeController@index')->where('id', '[0-9]+');
 Route::post('/add', 'RecipeController@add');
 Route::post('/add/validator', 'RecipeController@validator');
 

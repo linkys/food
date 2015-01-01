@@ -22,11 +22,11 @@ class Recipe extends Eloquent {
         $recipe->user_id = Auth::id();
         $recipe->kitchen_id = $data['kitchen'];
         $recipe->type_id = $data['type'];
-        $recipe->ingredients = $data['ingredients'];
+        $recipe->ingredients = nl2br($data['ingredients']);
         $recipe->title = $data['title'];
         $recipe->time = $data['time'];
-        $recipe->description = $data['description'];
-        $recipe->instruction= $data['instruction'];
+        $recipe->description = nl2br($data['description']);
+        $recipe->instruction= nl2br($data['instruction']);
 
         $recipe->save();
     }

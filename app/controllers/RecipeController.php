@@ -2,31 +2,33 @@
 
 class RecipeController extends BaseController {
 
-    protected $_items_vals = array(
-        'breakfast',
-        'desserts',
-        'drinks',
-        'risotto',
-        'salad',
-        'sandwiches',
-        'sauce',
-        'snack',
-        'italian',
-        'japan',
-        'mexico',
-        'france',
-    );
+    public function index($id){
 
-    public function get($item, $id=null)
-    {
-        if($item == 'add'){
+        $recipe = Recipe::join('types', 'recipes.type_id', '=', 'types.id')
+            ->join('kitchens', 'recipes.kitchen_id', '=', 'kitchens.id')
+            ->join('users', 'recipes.user_id', '=', 'users.id')
+            ->select(
+                'recipes.id',
+                'users.login as username',
+                'kitchens.title as kitchen_title',
+                'kitchens.name as kitchen_name',
+                'types.title as type_title',
+                'types.name as type_name',
+                'recipes.ingredients',
+                'recipes.title',
+                'recipes.time',
+                'recipes.description',
+                'recipes.instruction'
+            )
+            ->where('recipes.id', '=', $id)
+            ->orderBy('id', 'DESC')
+            ->get();
 
-            return View::make('add', ['types' => Type::all(), 'kitchens' => Kitchen::all()]);
-        }
+        return View::make('recipe', ['recipe' => $recipe]);
+    }
 
-        if (in_array($item, $this->_items_vals)) {
-
-        }
+    public function viewAddPage(){
+        return View::make('add', ['types' => Type::all(), 'kitchens' => Kitchen::all()]);
     }
 
     public function add()
