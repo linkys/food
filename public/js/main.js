@@ -86,7 +86,10 @@ function add_recipe_validator(){
 }
 
 function remove_errors(){
-    bodyOffOn('change', 'textarea, input', function(e) {
+    bodyOffOn('keypress', 'textarea, input, select', function(e) {
+        $(this).parents('.form-group').removeClass('error');
+    });
+    bodyOffOn('change', 'select', function(e) {
         if ( $(this).val() != '' ) {
             $(this).parents('.form-group').removeClass('error');
         }

@@ -27,14 +27,22 @@
 
         @foreach($recipes as $item)
         <div class="item">
-            <img src="#" width="150" height="150" alt=""/>
+            {{--<img src="#" width="150" height="150" alt=""/>--}}
             {{--<h1><a href="/recipe/breakfast/4513">{{ $item->title }}</a></h1>--}}
             <h1><a href="{{ action('RecipeController@get', [$item->kitchen_id, $item->id]) }}">{{ $item->title }}</a></h1>
-            <p class="author">Автор: <a href="/user/21">John Smith</a></p>
-            <p class="info">
-                <span class="ingredients">6 ингредиентов</span>
-                <span class="time">40 минут</span>
-            </p>
+            <div class="desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloremque necessitatibus optio provident quis quo quod temporibus ullam ut veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloremque necessitatibus optio provident quis quo quod temporibus ullam ut veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloremque necessitatibus optio provident quis quo quod temporibus ullam ut veniam.
+            </div>
+            <div class="info">
+                <p class="author">Автор: <a href="/user/21">John Smith</a></p>
+                <p><span class="info-item">{{ $item->time }} минут</span></p>
+                <p><span class="info-item">{{ $item->kitchen_id }} кухня</span></p>
+                <p><span class="info-item">{{ $item->type_id }}</span></p>
+            </div>
+
+
             <div style="clear: both"></div>
         </div>
         @endforeach

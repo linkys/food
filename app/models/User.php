@@ -28,8 +28,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return Validator::make($data, [
             'login' => 'required|min:4|max:100|unique:users',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|max:100|same:password_r',
-            'password_r' => 'required|min:6|max:100'
+            'password' => 'required|min:6|max:100',
+            'password_r' => 'required|min:6|max:100|same:password'
         ]);
     }
 

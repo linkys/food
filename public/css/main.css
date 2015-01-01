@@ -129,7 +129,7 @@ body {
     margin: 0 15px 15px 0;
 }
 
-.ingredients {
+.info-item {
     display: inline-block;
     background: #d5d5d5;
     padding: 3px 5px;
@@ -151,6 +151,9 @@ textarea {
 .error input {
     border-color: red;
 }
+.error select {
+    border-color: red;
+}
 
 .error-msg {
     display: none;
@@ -170,4 +173,13 @@ textarea {
 #slider {
     width: 75%;
     margin-top: 8px;
+}
+
+.desc {
+    width: 70%;
+    float: left;
+}
+.info {
+    width: 30%;
+    float: right;
 }

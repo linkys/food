@@ -31,10 +31,12 @@
                         <label class="col-md-4 control-label">Кухня</label>
                         <div class="col-md-5">
                             <select name="kitchen" class="form-control">
+                                <option value="">Выберите кухню</option>
                                 @foreach($kitchens as $kitchen)
                                     <option value="{{ $kitchen->id }}">{{ $kitchen->title }}</option>
                                 @endforeach
                             </select>
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
@@ -42,10 +44,12 @@
                         <label class="col-md-4 control-label">Тип</label>
                         <div class="col-md-5">
                             <select name="type" class="form-control">
+                                <option value="">Выберите тип</option>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}">{{ $type->title }}</option>
                                 @endforeach
                             </select>
+                            <p class="error-msg"></p>
                         </div>
                     </div>
 
