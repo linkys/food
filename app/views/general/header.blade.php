@@ -3,7 +3,7 @@
         <div role="navigation">
           <ul class="nav nav-justified">
             <li><a href="/">Главная</a></li>
-            <li><a href="/recipe/add">Добавить рецепт</a></li>
+            <li><a href="/add">Добавить рецепт</a></li>
             {{--<li><a href="#">Авторы</a></li>--}}
             <li><a href="/search">Найти</a></li>
             @if (Auth::check())

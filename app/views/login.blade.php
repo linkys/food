@@ -1,5 +1,9 @@
 @extends('general.layout')
 
+@section('title')
+    Авторизация
+@stop
+
 @section('content')
 
     <div class="main">

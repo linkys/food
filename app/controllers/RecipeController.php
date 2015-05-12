@@ -2,14 +2,6 @@
 
 class RecipeController extends BaseController {
 
-    public function get($item, $id=null)
-    {
-        if($item == 'add'){
-
-            return View::make('add', ['types' => Type::all(), 'kitchens' => Kitchen::all()]);
-        }
-    }
-
     public function add()
     {
         $data = Input::all();

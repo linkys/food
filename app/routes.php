@@ -12,13 +12,18 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('/recipe/{item}/{id?}', 'RecipeController@get');
-Route::post('/add', 'RecipeController@add');
+
+Route::get('/{item}/{id}', 'IndexController@index')->where(['item' => 'kitchen|type']);
+
+Route::get('/add', function (){
+    return View::make('add', ['types' => Type::all(), 'kitchens' => Kitchen::all()]);
+});
+
+Route::post('/recipe_add', 'RecipeController@add');
 
 Route::get('/enter', function (){
     return View::make('login');
 });
-
 
 Route::post('/login', 'UserController@login');
 Route::any('/logout', 'UserController@logout');

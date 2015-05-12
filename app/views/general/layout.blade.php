@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>@yield('title')</title>
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/main.css') }}
@@ -17,13 +17,15 @@
 
   <body>
 
-    <div class="container row">
-        <div class="col-lg-offset-2 col-lg-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-10">
 
-        @include('general.header')
+            @include('general.header')
 
-        @yield('content')
+            @yield('content')
 
+            </div>
         </div>
     </div>
 

@@ -2,14 +2,27 @@
 
 class IndexController extends BaseController {
 
-    public function index()
+    public function index($item=null, $id=null)
     {
-        $recipes = Recipe::orderBy('id', 'DESC')->paginate(3);
-//        $recipes = DB::table('recipes')->orderBy('id', 'DESC')->paginate(3);
-//        $recipes = DB::table('recipes')->orderBy('id', 'desc')->paginate(3);
-//        $recipes = DB::table('recipes')->paginate(15);
+        if (isset($item) && isset($id)){
 
-        return View::make('index', ['recipes' => $recipes]);
+            if($item == 'type'){
+                $item = Type::where('name', '=', $id);
+
+                $recipes = Recipe::where('type_id', '=', Input::get('id'))->orderBy('id', 'DESC')->paginate(3);
+                return View::make('index', ['recipes' => $recipes]);
+            }
+
+            if($item == 'kitchen'){
+
+            }
+
+        }else{
+
+            $recipes = Recipe::orderBy('id', 'DESC')->paginate(3);
+            return View::make('index', ['recipes' => $recipes]);
+
+        }
     }
 
 }
