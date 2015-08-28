@@ -12,6 +12,11 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/recipe/add', 'RecipeController@viewAddPage');
+Route::get('/recipe/{name}', 'IndexController@index')->where('name', '[A-Za-z]+');
+Route::get('/recipe/{id}', 'RecipeController@index')->where('id', '[0-9]+');
+Route::post('/add', 'RecipeController@add');
+Route::post('/add/validator', 'RecipeController@validator');
 
 Route::get('/{item}/{id}', 'IndexController@index')->where(['item' => 'kitchen|type']);
 
@@ -25,6 +30,7 @@ Route::get('/enter', function (){
     return View::make('login');
 });
 
+Route::post('/register/validator', 'UserController@validator');
 Route::post('/login', 'UserController@login');
 Route::any('/logout', 'UserController@logout');
 Route::post('/register', 'UserController@register');

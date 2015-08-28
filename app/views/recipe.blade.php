@@ -24,32 +24,33 @@
     </div>
 
     <div class="main col-lg-offset-1 col-lg-10">
+        @if(count($recipe) > 0)
+            @foreach($recipe as $item)
+                <div class="item">
+                    {{--<img src="#" width="150" height="150" alt=""/>--}}
+                    {{--<h1><a href="/recipe/breakfast/4513">{{ $item->title }}</a></h1>--}}
+                    <h1><a href="{{ action('RecipeController@index', [$item->id]) }}">{{ $item->title }}</a></h1>
+                    <div class="desc">
+                        <p>{{ $item->description }}</p>
+                        <label for="">Ингредиенты:</label>
+                        <p>{{ $item->ingredients }}</p>
+                        <label for="">Инструкция:</label>
+                        <p>{{ $item->instruction }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="author">Автор: <a href="/user/21">{{ $item->username }}</a></p>
+                        <p><span class="info-item">{{ $item->time }} минут</span></p>
+                        <p><span class="info-item">{{ $item->kitchen_title }} кухня</span></p>
+                        <p><span class="info-item">{{ $item->type_title }}</span></p>
+                    </div>
 
-        @if(count($recipes) > 0)
-            @foreach($recipes as $item)
-            <div class="item">
-                {{--<img src="#" width="150" height="150" alt=""/>--}}
-                {{--<h1><a href="/recipe/breakfast/4513">{{ $item->title }}</a></h1>--}}
-                <h1><a href="{{ action('RecipeController@index', [$item->id]) }}">{{ $item->title }}</a></h1>
-                <div class="desc">
-                    {{ $item->description }}
+
+                    <div style="clear: both"></div>
                 </div>
-                <div class="info">
-                    <p class="author">Автор: <a href="/user/21">{{ $item->username }}</a></p>
-                    <p><span class="info-item">{{ $item->time }} минут</span></p>
-                    <p><span class="info-item">{{ $item->kitchen_title }} кухня</span></p>
-                    <p><span class="info-item">{{ $item->type_title }}</span></p>
-                </div>
-
-
-                <div style="clear: both"></div>
-            </div>
             @endforeach
         @else
-            <p>В данном разделе еще нет ни одного рецепта. Вы можете это <a href="{{ action('RecipeController@viewAddPage') }}">исправить</a></p>
+            <p>error</p>
         @endif
-
-        {{ $recipes->links() }}
 
     </div>
 

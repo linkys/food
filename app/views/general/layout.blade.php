@@ -12,6 +12,12 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/main.css') }}
+    {{ HTML::style('css/jquery.nouislider.min.css') }}
+    {{--{{ HTML::style('css/jquery.nouislider.pips.css') }}--}}
+
+    {{ HTML::script('js/jquery-2.1.1.min.js') }}
+    {{ HTML::script('js/jquery.nouislider.all.js') }}
+    {{ HTML::script('js/main.js') }}
 
   </head>
 
